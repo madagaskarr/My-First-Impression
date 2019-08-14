@@ -50,7 +50,7 @@ public class MainActivity extends AppCompatActivity implements OnPersonClickList
         personsRecyclerView.setAdapter(personRecyclerViewAdapter);
     }
 
-    public void personsRecyclerView(View view) {
+    public void addNewPerson(View view) {
 
     }
 
