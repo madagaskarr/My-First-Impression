@@ -46,5 +46,10 @@ public class PersonRecyclerViewAdapter extends RecyclerView.Adapter<PersonRecycl
         this.personList = personList;
         notifyDataSetChanged();
     }
+
+    public Person getPersonAt(int position) {
+        return personList.get(position);
+    }
+
 }
 

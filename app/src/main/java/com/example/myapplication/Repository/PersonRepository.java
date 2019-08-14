@@ -4,6 +4,7 @@ import android.app.Application;
 
 import androidx.lifecycle.LiveData;
 
+import com.example.myapplication.AsyncTask.DeleteAsyncTask;
 import com.example.myapplication.AsyncTask.InsertAsyncTask;
 import com.example.myapplication.AsyncTask.UpdateAsyncTask;
 import com.example.myapplication.Dao.PersonDao;
@@ -36,7 +37,7 @@ public class PersonRepository {
     }
 
     public void deletePersonTask(Person person){
-        new UpdateAsyncTask(personDao).execute(person);
+        new DeleteAsyncTask(personDao).execute(person);
     }
 
 
