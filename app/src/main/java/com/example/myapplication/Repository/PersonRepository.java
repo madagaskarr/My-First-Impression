@@ -4,6 +4,8 @@ import android.app.Application;
 
 import androidx.lifecycle.LiveData;
 
+import com.example.myapplication.AsyncTask.InsertAsyncTask;
+import com.example.myapplication.AsyncTask.UpdateAsyncTask;
 import com.example.myapplication.Dao.PersonDao;
 import com.example.myapplication.Database.PersonsDatabase;
 import com.example.myapplication.Model.Person;
@@ -26,15 +28,15 @@ public class PersonRepository {
     }
 
     public void insertPersonTask(Person person){
-//        new InsertAsyncTask(personDao).execute(person);
+        new InsertAsyncTask(personDao).execute(person);
     }
 
     public void updatePersonTask(Person person){
-//        new UpdateAsyncTask(personDao).execute(person);
+        new UpdateAsyncTask(personDao).execute(person);
     }
 
     public void deletePersonTask(Person person){
-//        new UpdateAsyncTask(personDao).execute(person);
+        new UpdateAsyncTask(personDao).execute(person);
     }
 
 
