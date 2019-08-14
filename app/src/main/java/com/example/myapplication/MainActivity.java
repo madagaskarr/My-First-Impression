@@ -1,13 +1,19 @@
 package com.example.myapplication;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.DialogInterface;
 import android.os.Bundle;
+import android.text.Html;
+import android.text.InputType;
 import android.view.View;
+import android.widget.EditText;
+import android.widget.LinearLayout;
 
 import com.example.myapplication.Adapter.PersonRecyclerViewAdapter;
 import com.example.myapplication.Listener.OnPersonClickListener;
@@ -51,6 +57,50 @@ public class MainActivity extends AppCompatActivity implements OnPersonClickList
     }
 
     public void addNewPerson(View view) {
+
+        final Person person = new Person();
+
+        LinearLayout alertLayout = new LinearLayout(this);
+        alertLayout.setOrientation(LinearLayout.VERTICAL);
+
+        AlertDialog.Builder alertDialog = new AlertDialog.Builder(this);
+        alertDialog.setTitle("Add new person");
+
+        final EditText nameInput = new EditText(this);
+        nameInput.setInputType(InputType.TYPE_CLASS_TEXT);
+        nameInput.setHint(Html.fromHtml("<small>" + "enter name..." + "</small>"));
+        alertLayout.addView(nameInput);
+
+        final EditText relationshipInput = new EditText(this);
+        relationshipInput.setInputType(InputType.TYPE_CLASS_TEXT);
+        relationshipInput.setHint(Html.fromHtml("<small>" + "enter your relationship to him" + "</small>"));
+        alertLayout.addView(relationshipInput);
+
+        final EditText impressionInput = new EditText(this);
+        impressionInput.setInputType(InputType.TYPE_CLASS_TEXT);
+        impressionInput.setSingleLine(false);
+        impressionInput.setHint(Html.fromHtml("<small>" + "enter description... this is multiline, so you have plenty of place in case you really want to write..." + "</small>"));
+        alertLayout.addView(impressionInput);
+        alertDialog.setView(alertLayout);
+
+        alertDialog.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                person.setName(nameInput.getText().toString());
+                person.setFirstImpression(impressionInput.getText().toString());
+                person.setRelationship(relationshipInput.getText().toString());
+                personViewModel.insert(person);
+
+            }
+        });
+        alertDialog.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                dialog.cancel();
+            }
+        });
+
+        alertDialog.show();
 
     }
 
