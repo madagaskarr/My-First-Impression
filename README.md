@@ -5,7 +5,7 @@ This is a demo application showcasing some features of modern Android developmen
 
 Application is using MVVM architecture without any remote data sources. All the data is persisted using SQlite Database, then transferred to the repository layer, then viewmodel layer using LiveData  and at the end get observed at the UI layer.
 
-![Application](https://3u596a.ch.files.1drv.com/y4mCaCzvKlSmKy-Iifl-S9SxQD9FZleWWzsF099F7yi1fB9JodGKL5B_gX952rM48ZPIMGQEO23Be-nyxNOLhyX2mzhw1CCKYQkQq2k_ghjuhzC7wfamy0VctgPtLpqTP4-FfWAoC6d7bQZKBrvsPU7eSrhv_CDeqlFmtfI8i1AxAILVwZW70JHkxIDqB3GqnEYmW_aCjFaWzVWQ66bDah3ZA?width=239&height=660&cropmode=none)
+![Application](https://3u596a.ch.files.1drv.com/y4mkdsjtL7OzIKKHZfwpQneettt9BETFt-QmZSunJbgFL6D-46iBKsZqvyw8x31mBTav3on-v3G7BTZLAODbVvj11Jy_bpRog4IYHIe4CR3G2jMKfSfj93KGg3beB0-gnD5JPWgiieOoPTzl7TKUpXISe_cIK7U67g8nYTFu28aYDfRWq28IYJDyg3YYJplycy3sDXk5KKko8ylecNwd2LvXw?width=660&height=87&cropmode=none)
 
 Here is a short list of the app features:
 
