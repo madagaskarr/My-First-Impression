@@ -16,7 +16,7 @@
         android:textSize="22dp"
         android:textColor="#fff"
         android:gravity="center_vertical"
-        android:background="#00BCD4"
+        android:background="#536976"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -29,7 +29,7 @@
         android:textColor="#fff"
         android:gravity="center_vertical"
         android:paddingLeft="20dp"
-        android:background="#CDDC39"
+        android:background="#292E49"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/person_name_text_view" />
