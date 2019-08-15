@@ -27,7 +27,7 @@ import com.example.myapplication.ViewModel.PersonViewModel;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MainActivity extends AppCompatActivity implements OnPersonClickListener {
+public class PersonsListActivity extends AppCompatActivity implements OnPersonClickListener {
 
     private RecyclerView personsRecyclerView;
     private PersonViewModel personViewModel;
