@@ -10,6 +10,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.Html;
@@ -162,6 +163,9 @@ public class PersonsListActivity extends AppCompatActivity implements OnPersonCl
 
     @Override
     public void onPersonClicked(int position) {
+        Intent impressionActivityIntent = new Intent(this,ImpressionActivity.class);
+        impressionActivityIntent.putExtra("KEY", myDataSourceOfPersons.get(position));
+        startActivity(impressionActivityIntent);
 
     }
 }
