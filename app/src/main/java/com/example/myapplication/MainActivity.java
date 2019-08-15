@@ -11,8 +11,10 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.DialogInterface;
 import android.os.Bundle;
+import android.text.Editable;
 import android.text.Html;
 import android.text.InputType;
+import android.text.TextWatcher;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.LinearLayout;
@@ -31,6 +33,7 @@ public class MainActivity extends AppCompatActivity implements OnPersonClickList
     private PersonViewModel personViewModel;
     private PersonRecyclerViewAdapter personRecyclerViewAdapter;
     private List<Person> myDataSourceOfPersons;
+    private EditText searchEditText;
 
 
 
@@ -40,6 +43,7 @@ public class MainActivity extends AppCompatActivity implements OnPersonClickList
         setContentView(R.layout.activity_main);
 
         myDataSourceOfPersons = new ArrayList<>();
+        searchEditText = findViewById(R.id.search_edit_text);
         personRecyclerViewAdapter = new PersonRecyclerViewAdapter(myDataSourceOfPersons, this);
 
         personViewModel = ViewModelProviders.of(this).get(PersonViewModel.class);
@@ -47,7 +51,8 @@ public class MainActivity extends AppCompatActivity implements OnPersonClickList
             @Override
             public void onChanged(List<Person> people) {
                 if (people.size() != 0) {
-                    personRecyclerViewAdapter.setPersonList(people);
+                    myDataSourceOfPersons = people;
+                    personRecyclerViewAdapter.setPersonList(myDataSourceOfPersons);
                 }
             }
         });
@@ -70,7 +75,41 @@ public class MainActivity extends AppCompatActivity implements OnPersonClickList
             }
         }).attachToRecyclerView(personsRecyclerView);
 
+        searchEditText.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+                // TODO Auto-generated method stub
+            }
+
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+                // TODO Auto-generated method stub
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+
+                filter(s.toString());
+            }
+        });
     }
+
+    void filter(String text){
+        List<Person> temp = new ArrayList();
+        for(Person d: myDataSourceOfPersons){
+
+            if(d.getName().toLowerCase().contains(text.toLowerCase())){
+                temp.add(d);
+            }
+        }
+        personRecyclerViewAdapter.setPersonList(temp);
+    }
+
+
+
+
 
     public void addNewPerson(View view) {
 
