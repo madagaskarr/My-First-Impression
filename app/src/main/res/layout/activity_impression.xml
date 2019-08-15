@@ -21,7 +21,7 @@
         android:id="@+id/impression_text_view"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:background="#FF5722"
+        android:background="@drawable/gradient_list"
         android:textColor="#FFF"
         android:gravity="center"
         android:textSize="20dp"

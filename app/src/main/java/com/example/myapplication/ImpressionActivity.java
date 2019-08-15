@@ -3,6 +3,7 @@ package com.example.myapplication;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.graphics.drawable.AnimationDrawable;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
@@ -20,6 +21,7 @@ public class ImpressionActivity extends AppCompatActivity {
         setContentView(R.layout.activity_impression);
 
         impressionTextView = findViewById(R.id.impression_text_view);
+
         Intent incomingIntent = getIntent();
 
 
@@ -27,7 +29,15 @@ public class ImpressionActivity extends AppCompatActivity {
             incomingPerson = incomingIntent.getParcelableExtra("KEY");
             impressionTextView.setText(incomingPerson.getFirstImpression());
         }
+
+        AnimationDrawable animationDrawable = (AnimationDrawable) impressionTextView.getBackground();
+        animationDrawable.setEnterFadeDuration(4000);
+        animationDrawable.setExitFadeDuration(4000);
+        animationDrawable.start();
+
     }
+
+
 
     public void goBackToPersonsListActivity(View view) {
         finish();
