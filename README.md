@@ -18,5 +18,3 @@ Here is a short list of the app features:
 * Custom Buttons
 * Searching Implemenation
 * Swipe to Delete
-
-![](https://3u586a.ch.files.1drv.com/y4medW9dx2-T1qfezbBZO5vlXcqJABSwpvc8yE8FeyzkabLU-FDdAZQJSqqs9NvwJqTPUJJjuLFfS1v-FkZOqEExv1ryJ0Oigiu2ZHGgLovcqLSiVPRKLx0IxYauyGwuhnxRrP_-2HAcaBnBQ4s6Vv2eExy0GwAkIw0RssxBSFQ7UIeMp161JuR_ZLBQFrSS7qMwsZ0LyEWLkmu1r0ey3HoMg?width=320&height=451&cropmode=none)
