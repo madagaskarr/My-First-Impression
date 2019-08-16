@@ -34,6 +34,8 @@ public class PersonsListActivity extends AppCompatActivity implements OnPersonCl
     private PersonViewModel personViewModel;
     private PersonRecyclerViewAdapter personRecyclerViewAdapter;
     private List<Person> myDataSourceOfPersons;
+    private List<Person> mySortedDataSourceOfPersons;
+    private boolean isSorted;
     private EditText searchEditText;
 
 
@@ -44,6 +46,7 @@ public class PersonsListActivity extends AppCompatActivity implements OnPersonCl
         setContentView(R.layout.activity_main);
 
         myDataSourceOfPersons = new ArrayList<>();
+        isSorted = false;
         searchEditText = findViewById(R.id.search_edit_text);
         personRecyclerViewAdapter = new PersonRecyclerViewAdapter(myDataSourceOfPersons, this);
 
@@ -54,6 +57,7 @@ public class PersonsListActivity extends AppCompatActivity implements OnPersonCl
                 if (people.size() != 0) {
                     myDataSourceOfPersons = people;
                     personRecyclerViewAdapter.setPersonList(myDataSourceOfPersons);
+                    isSorted = false;
                 }
             }
         });
@@ -90,22 +94,27 @@ public class PersonsListActivity extends AppCompatActivity implements OnPersonCl
             }
 
             @Override
-            public void afterTextChanged(Editable s) {
+            public void afterTextChanged(Editable searchingText) {
 
-                filter(s.toString());
+                filter(searchingText.toString());
+
+                if (searchingText.toString().isEmpty()) {
+                    isSorted = false;
+                }
             }
         });
     }
 
     void filter(String text){
-        List<Person> temp = new ArrayList();
-        for(Person d: myDataSourceOfPersons){
+        mySortedDataSourceOfPersons = new ArrayList();
+        for(Person person: myDataSourceOfPersons){
 
-            if(d.getName().toLowerCase().contains(text.toLowerCase())){
-                temp.add(d);
+            if(person.getName().toLowerCase().contains(text.toLowerCase())){
+                mySortedDataSourceOfPersons.add(person);
+                isSorted = true;
             }
         }
-        personRecyclerViewAdapter.setPersonList(temp);
+        personRecyclerViewAdapter.setPersonList(mySortedDataSourceOfPersons);
     }
 
 
@@ -164,8 +173,11 @@ public class PersonsListActivity extends AppCompatActivity implements OnPersonCl
     @Override
     public void onPersonClicked(int position) {
         Intent impressionActivityIntent = new Intent(this,ImpressionActivity.class);
-        impressionActivityIntent.putExtra("KEY", myDataSourceOfPersons.get(position));
+        if (isSorted == false) {
+            impressionActivityIntent.putExtra("KEY", myDataSourceOfPersons.get(position));
+        } else {
+            impressionActivityIntent.putExtra("KEY", mySortedDataSourceOfPersons.get(position));
+        }
         startActivity(impressionActivityIntent);
-
     }
 }

@@ -31,7 +31,7 @@ public class ImpressionActivity extends AppCompatActivity {
         }
 
         AnimationDrawable animationDrawable = (AnimationDrawable) impressionTextView.getBackground();
-        animationDrawable.setEnterFadeDuration(4000);
+        animationDrawable.setEnterFadeDuration(2000);
         animationDrawable.setExitFadeDuration(4000);
         animationDrawable.start();
 
